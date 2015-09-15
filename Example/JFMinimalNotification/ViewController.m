@@ -125,6 +125,10 @@
     [self.minimalNotification setStyle:JFMinimalNotificationStyleWarning animated:YES];
 }
 
+- (IBAction)setConciergeStyle:(id)sender {
+    [self.minimalNotification setStyle:JFMinimalNotificationStyleConcierge animated:YES];
+}
+
 - (IBAction)setLeftView:(id)sender {
     /**
      * Set the left view with any UIView or UIView subclass.

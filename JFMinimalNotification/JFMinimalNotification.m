@@ -117,6 +117,12 @@ static CGFloat const kNotificationAccessoryPadding = 10.0f;
         [notification addGestureRecognizer:tapHandler];
     }
     
+    if (notification.presentFromTop) {
+        UIPanGestureRecognizer *panHandler = [[UIPanGestureRecognizer alloc] initWithTarget:notification action:@selector(handlePan:)];
+        notification.userInteractionEnabled = YES;
+        [notification addGestureRecognizer:panHandler];
+    }
+    
     return notification;
 }
 
@@ -345,6 +351,17 @@ static CGFloat const kNotificationAccessoryPadding = 10.0f;
             
         case JFMinimalNotificationStyleWarning: {
             UIColor* primaryColor = [UIColor notificationYellowColor];
+            UIColor* secondaryColor = [UIColor notificationBlackColor];
+            self.backgroundColor = primaryColor;
+            self.titleLabel.textColor = secondaryColor;
+            self.subTitleLabel.textColor = secondaryColor;
+            image = [JFMinimalNotificationArt imageOfWarningWithBGColor:primaryColor forgroundColor:secondaryColor];
+            self.accessoryView.backgroundColor = secondaryColor;
+            break;
+        }
+            
+        case JFMinimalNotificationStyleConcierge: {
+            UIColor* primaryColor = [UIColor notificationWhiteColor];
             UIColor* secondaryColor = [UIColor notificationBlackColor];
             self.backgroundColor = primaryColor;
             self.titleLabel.textColor = secondaryColor;
@@ -697,6 +714,19 @@ static CGFloat const kNotificationAccessoryPadding = 10.0f;
 {
     if (self.touchHandler) {
         self.touchHandler();
+    }
+}
+
+- (void)handlePan:(UIPanGestureRecognizer *)gesture
+{
+    CGPoint velocity = [gesture velocityInView:gesture.view];
+    
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        if(velocity.y < 0) {
+            [self dismiss];
+        } else {
+            NSLog(@"gesture went down");
+        }
     }
 }
 
