@@ -74,7 +74,8 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/atljeremy/JFMinimalNotifications.git", :tag => "0.0.5" }
+  #s.source       = { :git => "https://github.com/atljeremy/JFMinimalNotifications.git", :tag => "0.0.5" }
+  s.source       = { :git => "https://github.com/atljeremy/JFMinimalNotifications.git", :branch => "abodo-messenger" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
