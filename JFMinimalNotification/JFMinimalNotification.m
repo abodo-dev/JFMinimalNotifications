@@ -117,12 +117,6 @@ static CGFloat const kNotificationAccessoryPadding = 10.0f;
         [notification addGestureRecognizer:tapHandler];
     }
     
-    if (notification.presentFromTop) {
-        UIPanGestureRecognizer *panHandler = [[UIPanGestureRecognizer alloc] initWithTarget:notification action:@selector(handlePan:)];
-        notification.userInteractionEnabled = YES;
-        [notification addGestureRecognizer:panHandler];
-    }
-    
     return notification;
 }
 
@@ -240,6 +234,12 @@ static CGFloat const kNotificationAccessoryPadding = 10.0f;
 
 - (void)configureInitialNotificationConstraintsForTopPresentation:(BOOL)topPresentation layoutIfNeeded:(BOOL)layoutIfNeeded
 {
+    if (topPresentation) {
+        UIPanGestureRecognizer *panHandler = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+        self.userInteractionEnabled = YES;
+        [self addGestureRecognizer:panHandler];
+    }
+    
     if (self.notificationVerticalConstraints.count > 0) {
         [self.superview removeConstraints:self.notificationVerticalConstraints];
     }
