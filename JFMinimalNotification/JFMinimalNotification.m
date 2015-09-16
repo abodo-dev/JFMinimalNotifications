@@ -361,7 +361,7 @@ static CGFloat const kNotificationAccessoryPadding = 10.0f;
         }
             
         case JFMinimalNotificationStyleConcierge: {
-            UIColor* primaryColor = [UIColor notificationWhiteColor];
+            UIColor* primaryColor = [UIColor whiteColor];
             UIColor* secondaryColor = [UIColor notificationBlackColor];
             self.backgroundColor = primaryColor;
             self.titleLabel.textColor = secondaryColor;
