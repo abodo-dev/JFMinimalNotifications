@@ -402,7 +402,7 @@ static CGFloat const kNotificationAccessoryPadding = 10.0f;
         if (!self.titleLabel) {
             self.titleLabel = [UILabel new];
             self.titleLabel.accessibilityLabel = @"Notification Title";
-            self.titleLabel.adjustsFontSizeToFitWidth = YES;
+//            self.titleLabel.adjustsFontSizeToFitWidth = YES;
             self.titleLabel.backgroundColor = [UIColor clearColor];
             self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
             [self.contentView addSubview:self.titleLabel];
@@ -427,7 +427,7 @@ static CGFloat const kNotificationAccessoryPadding = 10.0f;
             self.subTitleLabel = [UILabel new];
             self.subTitleLabel.accessibilityLabel = @"Notification Subtitle";
             self.subTitleLabel.text = subTitle;
-            self.subTitleLabel.adjustsFontSizeToFitWidth = YES;
+            //self.subTitleLabel.adjustsFontSizeToFitWidth = YES;
             self.subTitleLabel.backgroundColor = [UIColor clearColor];
             self.subTitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
             [self.contentView addSubview:self.subTitleLabel];
@@ -506,14 +506,14 @@ static CGFloat const kNotificationAccessoryPadding = 10.0f;
                 
                 views = NSDictionaryOfVariableBindings(leftView);
                 [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.leftAccessoryView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1.f constant:0.f]];
-                [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[leftView(==60)]" options:0 metrics:nil views:views]];
+                [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[leftView(==50)]" options:0 metrics:nil views:views]];
                 
                 if (titleLabel) {
                     if (rightView) {
-                        visualFormat = @"H:|-padding-[leftView(==60)]-[titleLabel(>=100)]-padding-[rightView(==60)]-padding-|";
+                        visualFormat = @"H:|-padding-[leftView(==50)]-[titleLabel(>=100)]-padding-[rightView(==60)]-padding-|";
                         views = NSDictionaryOfVariableBindings(titleLabel, leftView, rightView);
                     } else {
-                        visualFormat = @"H:|-padding-[leftView(==60)]-[titleLabel(>=100)]-padding-|";
+                        visualFormat = @"H:|-padding-[leftView(==50)]-[titleLabel(>=100)]-padding-|";
                         views = NSDictionaryOfVariableBindings(titleLabel, leftView);
                     }
                     [self.contentView removeConstraints:self.titleLabelHorizontalConsraints];
@@ -523,10 +523,10 @@ static CGFloat const kNotificationAccessoryPadding = 10.0f;
                 
                 if (subTitleLabel) {
                     if (rightView) {
-                        visualFormat = @"H:|-padding-[leftView(==60)]-[subTitleLabel(>=100)]-padding-[rightView(==60)]-padding-|";
+                        visualFormat = @"H:|-padding-[leftView(==50)]-[subTitleLabel(>=100)]-padding-[rightView(==60)]-padding-|";
                         views = NSDictionaryOfVariableBindings(subTitleLabel, leftView, rightView);
                     } else {
-                        visualFormat = @"H:|-padding-[leftView(==60)]-[subTitleLabel(>=100)]-padding-|";
+                        visualFormat = @"H:|-padding-[leftView(==50)]-[subTitleLabel(>=100)]-padding-|";
                         views = NSDictionaryOfVariableBindings(subTitleLabel, leftView);
                     }
                     [self.contentView removeConstraints:self.subTitleLabelHorizontalConsraints];

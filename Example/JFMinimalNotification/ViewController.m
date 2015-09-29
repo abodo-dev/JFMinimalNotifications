@@ -20,7 +20,7 @@
     [super viewDidLoad];
     
     self.titleLabelTextField.text = @"Testing";
-    self.subTitleLabelTextField.text = @"This is my awesome sub-title";
+    self.subTitleLabelTextField.text = @"This is my awesome sub-title that should get truncated";
     
     /**
      * Create the notification
